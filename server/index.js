@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
+
 const calculateOrderAmount = (orderItems) => {
     const initialValue = 0;
     const itemsPrice = orderItems.reduce(
