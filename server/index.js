@@ -21,7 +21,7 @@ const userRouter = require('./routes/userRouter');
 const Order = require('./models/orderModel');
 
 var corsOptions = {
-    origin: "http://localhost:3000"
+    origin: "https://food-ordering-service-app.onrender.com"
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
