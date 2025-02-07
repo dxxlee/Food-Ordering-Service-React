@@ -20,6 +20,15 @@ const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
 const Order = require('./models/orderModel');
 
+const API_URL = process.env.REACT_APP_API_URL; // Используем URL из .env файла
+
+async function getData() {
+  const response = await fetch(`${API_URL}/api/endpoint`);
+  const data = await response.json();
+  console.log(data);
+}
+
+
 var corsOptions = {
     origin: "https://food-order-front.onrender.com/"
 }
