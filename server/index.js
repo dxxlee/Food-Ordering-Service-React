@@ -21,7 +21,7 @@ const userRouter = require('./routes/userRouter');
 const Order = require('./models/orderModel');
 
 var corsOptions = {
-    origin: "https://food-order-backend-we3d.onrender.com/"
+    origin: "https://food-order-backend-6az2.onrender.com/"
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
