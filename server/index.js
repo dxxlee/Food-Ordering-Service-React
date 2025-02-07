@@ -8,6 +8,11 @@ const authRouter = require("./routes/authRouter");
 const cartRouter = require("./routes/cartRouter");
 const orderRouter = require("./routes/orderRouter");
 const User = require('./models/userModel');
+// import { disableReactDevtools } from '@fvilers/disable-react-devtools'
+
+// if(process.env.NODE_ENV === 'production') disableReactDevtools();
+
+
 
 const path = require("path");
 
@@ -21,7 +26,7 @@ const userRouter = require('./routes/userRouter');
 const Order = require('./models/orderModel');
 
 var corsOptions = {
-    origin: "https://food-ordering-service-app.onrender.com"
+    origin: "https://food-order-backend-we3d.onrender.com/"
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
