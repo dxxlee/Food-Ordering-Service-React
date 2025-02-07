@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 //const dbName = process.env.DB_NAME || 'food-ordering';
 
 // const dbUri = `mongodb://${dbHost}:${dbPort}/${dbName}`;
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGODB_URI;
 
 const db = async () => {
   try {
