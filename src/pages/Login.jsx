@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -53,7 +53,7 @@ const Login = () => {
     e.preventDefault();
     const twoFAToken = e.target.token.value;
     try {
-      const response = await fetch("http://localhost:8080/api/verify-2fa", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/verify-2fa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const Login = () => {
         toast.error("You must be logged in to enable 2FA");
         return;
       }
-      const response = await fetch("http://localhost:8080/api/enable-2fa", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/enable-2fa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
