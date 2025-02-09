@@ -8,7 +8,7 @@ const Enable2FAButton = () => {
   // Функция для включения 2FA
   const enable2FA = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/enable-2fa", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/enable-2fa", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
