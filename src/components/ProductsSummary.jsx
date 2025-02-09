@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const ProductsSummary = ({ cart, updateCart }) => {
     const handleClearCart = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/cart/clear", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/clear", {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem("Auth token")}`,
