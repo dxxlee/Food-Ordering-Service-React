@@ -8,11 +8,6 @@ const authRouter = require("./routes/authRouter");
 const cartRouter = require("./routes/cartRouter");
 const orderRouter = require("./routes/orderRouter");
 const User = require('./models/userModel');
-// import { disableReactDevtools } from '@fvilers/disable-react-devtools'
-
-// if(process.env.NODE_ENV === 'production') disableReactDevtools();
-
-
 
 const path = require("path");
 
@@ -25,23 +20,25 @@ const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
 const Order = require('./models/orderModel');
 
+const API_URL = process.env.REACT_APP_API_URL; // Используем URL из .env файла
+
+// async function getData() {
+//   const response = await fetch(`${API_URL}/api/endpoint`);
+//   const data = await response.json();
+//   console.log(data);
+// }
+
+
 var corsOptions = {
-    origin: "https://food-order-backend-we3d.onrender.com/"
-}
+    origin: "https://food-order-front.onrender.com", // Allow front-end domain
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods (optional)
+    credentials: true // Allow credentials such as cookies (if needed)
+};
+
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
 
-
-const calculateOrderAmount = (orderItems) => {
-    const initialValue = 0;
-    const itemsPrice = orderItems.reduce(
-        (previousValue, currentValue) =>
-        previousValue + currentValue.price * currentValue.amount, initialValue
-    );
-    return itemsPrice * 100;
-}
 
 app.use("/api", authRouter);
 app.use("/api/cart", cartRouter);
@@ -77,38 +74,38 @@ app.get('/api/healthcheck', (req, res) => {
 })
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+// const { MongoClient, ServerApiVersion } = require('mongodb');
 
-// Use the MongoDB URI from the .env file
-const uri = process.env.MONGODB_URI;
+// // Use the MongoDB URI from the .env file
+// const uri = process.env.MONGODB_URI;
 
-// Create a new MongoClient
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+// // Create a new MongoClient
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
 
-async function run() {
-  try {
-    // Connect the client to the server
-    await client.connect();
+// async function run() {
+//   try {
+//     // Connect the client to the server
+//     await client.connect();
 
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-  } catch (err) {
-    console.error("Error connecting to MongoDB:", err);
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
+//   } catch (err) {
+//     console.error("Error connecting to MongoDB:", err);
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
 
-run().catch(console.dir);
+// run().catch(console.dir);
 
 
 const PORT = process.env.PORT || 8080;
