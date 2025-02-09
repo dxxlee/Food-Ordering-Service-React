@@ -30,7 +30,9 @@ async function getData() {
 
 
 var corsOptions = {
-    origin: "https://food-order-front.onrender.com/"
+    origin: "https://food-order-front.onrender.com/",
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
