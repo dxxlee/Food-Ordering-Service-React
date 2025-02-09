@@ -6,7 +6,7 @@ const Orders = () => {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/orders", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/orders", {
                 headers: { Authorization: `Bearer ${sessionStorage.getItem("Auth token")}` },
             });
 
