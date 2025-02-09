@@ -16,7 +16,7 @@ const PaymentForm = ({ cart, setCart }) => {
         totalPrice: cart.reduce((sum, item) => sum + item.price * item.amount, 0),
       };
 
-      const response = await fetch("http://localhost:8080/api/orders/create", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/orders/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
