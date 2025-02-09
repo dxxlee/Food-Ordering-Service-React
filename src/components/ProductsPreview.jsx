@@ -14,7 +14,7 @@ export const ProductsPreview = ({ updateCartCount }) => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/products")
+        fetch("https://food-order-backend-6az2.onrender.com/api/products")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
