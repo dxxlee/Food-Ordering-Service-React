@@ -22,11 +22,11 @@ const Order = require('./models/orderModel');
 
 const API_URL = process.env.REACT_APP_API_URL; // Используем URL из .env файла
 
-async function getData() {
-  const response = await fetch(`${API_URL}/api/endpoint`);
-  const data = await response.json();
-  console.log(data);
-}
+// async function getData() {
+//   const response = await fetch(`${API_URL}/api/endpoint`);
+//   const data = await response.json();
+//   console.log(data);
+// }
 
 
 var corsOptions = {
@@ -74,38 +74,38 @@ app.get('/api/healthcheck', (req, res) => {
 })
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+// const { MongoClient, ServerApiVersion } = require('mongodb');
 
-// Use the MongoDB URI from the .env file
-const uri = process.env.MONGODB_URI;
+// // Use the MongoDB URI from the .env file
+// const uri = process.env.MONGODB_URI;
 
-// Create a new MongoClient
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+// // Create a new MongoClient
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
 
-async function run() {
-  try {
-    // Connect the client to the server
-    await client.connect();
+// async function run() {
+//   try {
+//     // Connect the client to the server
+//     await client.connect();
 
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
-  } catch (err) {
-    console.error("Error connecting to MongoDB:", err);
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
+//   } catch (err) {
+//     console.error("Error connecting to MongoDB:", err);
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
 
-run().catch(console.dir);
+// run().catch(console.dir);
 
 
 const PORT = process.env.PORT || 8080;
