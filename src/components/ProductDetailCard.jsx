@@ -7,7 +7,7 @@ const ProductDetailCard = ({ product, onAddProduct }) => {
     const handleAddToCart = async () => {
         setLoading(true);
         try {
-            const response = await fetch("http://localhost:8080/api/cart/add", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

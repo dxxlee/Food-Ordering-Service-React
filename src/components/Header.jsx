@@ -32,7 +32,7 @@ export const Header = () => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/cart", {
+        const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart", {
           headers: { Authorization: `Bearer ${sessionStorage.getItem("Auth token")}` },
         });
 
