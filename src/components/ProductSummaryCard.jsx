@@ -4,7 +4,7 @@ import { FiTrash2 } from "react-icons/fi"; // иконка мусорки
 export const ProductSummaryCard = ({ product, updateCart }) => {
     const handleIncrement = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/cart/add", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
 
     const handleDecrement = async () => {
         try {
-            const response = await fetch("http://localhost:8080/api/cart/decrease", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/decrease", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -48,7 +48,7 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
 
     const handleRemove = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/cart/remove-item/${product.product}`, {
+            const response = await fetch(`https://food-order-backend-6az2.onrender.com/api/cart/remove-item/${product.product}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem("Auth token")}`,
