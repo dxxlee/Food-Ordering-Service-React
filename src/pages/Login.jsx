@@ -45,7 +45,6 @@ const Login = () => {
         } else {
           navigate("/");
         }
-        window.location.reload();
       } else {
         toast.error(result.message || "Login failed");
       }
@@ -82,7 +81,6 @@ const Login = () => {
         } else {
           navigate("/");
         }
-        window.location.reload();
       } else {
         setError(result.message || "Invalid 2FA token");
       }
