@@ -31,7 +31,9 @@ const PaymentForm = ({ cart, setCart }) => {
         setCart([]); // очистить корзину на фронте
 
         // После успешного создания заказа отправляем запрос на очистку корзины на сервере
-        await fetch("http://localhost:8080/api/cart/clear", {
+        await fetch("https://food-order-backend-6az2.onrender.com/api/cart/clear", 
+        // await fetch("http://localhost:8080/api/cart/clear", 
+        {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
