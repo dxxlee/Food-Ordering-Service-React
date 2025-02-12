@@ -7,7 +7,9 @@ const ProductDetailCard = ({ product, onAddProduct }) => {
     const handleAddToCart = async () => {
         setLoading(true);
         try {
-            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", 
+            // const response = await fetch("http://localhost:8080/api/cart/add", 
+            {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +48,7 @@ const ProductDetailCard = ({ product, onAddProduct }) => {
             <div className="text-center">
                 <h2 className="text-xl font-bold text-gray-800">{product.name}</h2>
                 <p className="text-gray-500 text-sm mt-2">{product.desciption}</p>
-                <div className="mt-3 text-xl font-semibold text-yellow-500">${product.price}</div>
+                <div className="mt-3 text-xl font-semibold text-green-500">${product.price}</div>
             </div>
 
             {/*кнопка добавитьб*/}
@@ -54,7 +56,7 @@ const ProductDetailCard = ({ product, onAddProduct }) => {
                 <Button 
                     onClick={handleAddToCart} 
                     disabled={loading}
-                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition"
+                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition"
                 >
                     {loading ? "Adding..." : "Add to Cart"}
                 </Button>

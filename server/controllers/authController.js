@@ -54,10 +54,23 @@ const loginUser = async (req, res) => {
       });
     }
 
+    // Если пользователь админ, добавляем role: "admin", иначе role: "user"
+    const role = user.isAdmin ? "admin" : "user";
+    
     // Если 2FA не включён, возвращаем финальный JWT
-    const jwtToken = jwt.sign({ id: user._id, twoFactor: true }, SECRET_KEY, { expiresIn: "1h" });
+    const jwtToken = jwt.sign({ id: user._id, twoFactor: true, role }, SECRET_KEY, { expiresIn: "1h" });
     console.log("Login successful. JWT:", jwtToken);
-    res.json({ token: jwtToken, user: { id: user._id, name: user.name, email: user.email } });
+    // Включаем isAdmin в объект пользователя
+    return res.json({ 
+      token: jwtToken, 
+      user: { 
+        id: user._id, 
+        name: user.name, 
+        email: user.email,
+        isAdmin: user.isAdmin  // добавлено поле isAdmin
+      } 
+    });
+
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: "Server error", error: err.message });
@@ -118,10 +131,20 @@ const verifyTwoFactorAuth = async (req, res) => {
 
     console.log("\n2FA verification result for user", user.email, ":", verified);
     if (verified) {
-      const jwtToken = jwt.sign({ id: user._id, twoFactor: true }, SECRET_KEY, { expiresIn: "1h" });
+      const role = user.isAdmin ? "admin" : "user";
+      const jwtToken = jwt.sign({ id: user._id, twoFactor: true, role }, SECRET_KEY, { expiresIn: "1h" });
       console.log("\n2FA verified. Final JWT generated:", jwtToken);
       console.log("==============================================================================================");
-      res.json({ message: '2FA verified successfully', token: jwtToken, user });
+      res.json({ 
+        message: '2FA verified successfully', 
+        token: jwtToken, 
+        user: { 
+          id: user._id, 
+          name: user.name, 
+          email: user.email,
+          isAdmin: user.isAdmin  // включено поле isAdmin
+        } 
+      });
     } else {
       console.log("Invalid 2FA token provided for user:", user.email);
       res.status(400).json({ message: 'Invalid 2FA token' });

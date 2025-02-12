@@ -11,17 +11,32 @@ const getCart = async (req, res) => {
       return res.json({ user: req.user.id, items: [] });
     }
 
+    // const cartWithImages = {
+    //   user: cart.user,
+    //   items: cart.items.map(item => ({
+    //     _id: item._id,
+    //     product: item.product._id,
+    //     name: item.product.name,
+    //     price: item.product.price,
+    //     amount: item.amount,
+    //     imageUrl: item.product.imageUrl,
+    //     desciption: item.product.desciption
+    //   })),
+    // };
+
     const cartWithImages = {
       user: cart.user,
       items: cart.items.map(item => ({
         _id: item._id,
-        product: item.product._id,
-        name: item.product.name,
-        price: item.product.price,
+        product: item.product,
+        name: item.name,
+        price: item.price,
         amount: item.amount,
-        imageUrl: item.product.imageUrl
+        imageUrl: item.imageUrl,
+        desciption: item.desciption
       })),
     };
+
 
     res.json(cartWithImages);
   } catch (err) {
@@ -32,7 +47,7 @@ const getCart = async (req, res) => {
 
 const addProductToCart = async (req, res) => {
   try {
-    const { productId, name, price } = req.body;
+    const { productId, name, price, imageUrl, desciption } = req.body;
 
     let cart = await Cart.findOne({ user: req.user.id });
 
@@ -45,7 +60,7 @@ const addProductToCart = async (req, res) => {
     if (existingItem) {
       existingItem.amount += 1;
     } else {
-      cart.items.push({ product: productId, name, price, amount: 1 });
+      cart.items.push({ product: productId, name, price, amount: 1, imageUrl, desciption });
     }
 
     await cart.save();
@@ -57,12 +72,17 @@ const addProductToCart = async (req, res) => {
 
 const clearCart = async (req, res) => {
   try {
-    await Cart.findOneAndDelete({ user: req.user.id });
-    res.json({ message: "Cart cleared" });
+    // Найти корзину пользователя и очистить её
+    await Cart.findOneAndUpdate(
+      { user: req.user.id },
+      { $set: { items: [] } } // очищаем все элементы в корзине
+    );
+    res.json({ message: "Cart cleared successfully" });
   } catch (err) {
     res.status(500).json({ message: "Error clearing cart", error: err.message });
   }
 };
+
 
 const decreaseProductQuantity = async (req, res) => {
   try {

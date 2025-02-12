@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get("/", authMiddleware, getCart);
 router.post("/add", authMiddleware, addProductToCart);
-router.delete("/", authMiddleware, clearCart);
+router.post("/clear", authMiddleware, clearCart);
 router.post("/decrease", authMiddleware, decreaseProductQuantity);
 router.delete("/remove-item/:productId", authMiddleware, removeItemFromCart);
 router.delete("/clear", authMiddleware, clearAllItemsFromCart);

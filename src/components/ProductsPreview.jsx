@@ -15,6 +15,7 @@ export const ProductsPreview = ({ updateCartCount }) => {
 
     useEffect(() => {
         fetch("https://food-order-backend-6az2.onrender.com/api/products")
+        // fetch("http://localhost:8080/api/products")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -31,7 +32,7 @@ export const ProductsPreview = ({ updateCartCount }) => {
             <Carousel responsive={responsive}>
                 {products.length > 0 &&
                     products.map((product) => (
-                        <div className="w-full p-3" key={product._id}>
+                        <div className="w-full p-3 mt-10" key={product._id}>
                             <ProductPreviewCard product={product} updateCartCount={updateCartCount} />
                         </div>
                     ))}

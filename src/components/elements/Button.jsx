@@ -7,8 +7,8 @@ const sizes = {
 };
 
 const variants = {
-  primary: "bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-400",
-  secondary: "bg-red-500 hover:bg-red-600 focus:ring-red-400",
+  secondary: "bg-yellow-500 hover:bg-yellow-600 focus:ring-yellow-400",
+  primary: "bg-red-500 hover:bg-red-600 focus:ring-red-400",
   dark: "bg-black hover:bg-gray-800 focus:ring-gray-400",
 };
 
@@ -23,7 +23,7 @@ const Button = ({
   return (
     <button
       className={clsx(
-        "text-white font-bold rounded-lg transition duration-300 ease-in-out",
+        "text-white font-bold rounded-3xl transition duration-300 ease-in-out",
         "focus:outline-none focus:ring-2 focus:ring-opacity-50",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         sizes[size],

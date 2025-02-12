@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 export const ProductsSummary = ({ cart, updateCart }) => {
     const handleClearCart = async () => {
         try {
-            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/clear", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/clear", 
+            // const response = await fetch("http://localhost:8080/api/cart/clear", 
+            {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem("Auth token")}`,
@@ -18,6 +20,7 @@ export const ProductsSummary = ({ cart, updateCart }) => {
             console.error("Error clearing cart:", err);
         }
     };
+    
 
     return (
         <motion.div
@@ -34,7 +37,7 @@ export const ProductsSummary = ({ cart, updateCart }) => {
             {/*кнопка очистки*/}
             {cart.length > 0 && (
                 <motion.button
-                    className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition-all duration-300 w-full mb-4"
+                    className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition-all duration-300 w-40 mb-4"
                     onClick={handleClearCart}
                     whileHover={{ scale: 1.05 }}
                 >

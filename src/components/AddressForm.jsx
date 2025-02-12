@@ -25,7 +25,7 @@ export const AddressForm = ({ onTabSwitch }) => {
                     <label className="block text-sm font-semibold text-gray-700">Recipient's Name</label>
                     <input 
                         {...register("recipientName", { required: true })}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none"
                         type="text"
                         placeholder="Full Name"
                     />
@@ -37,7 +37,7 @@ export const AddressForm = ({ onTabSwitch }) => {
                     <label className="block text-sm font-semibold text-gray-700">Phone Number</label>
                     <input 
                         {...register("phone", { required: true })}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none"
                         type="tel"
                         placeholder="Your phone number"
                     />
@@ -49,7 +49,7 @@ export const AddressForm = ({ onTabSwitch }) => {
                     <label className="block text-sm font-semibold text-gray-700">Street Address</label>
                     <input 
                         {...register("address", { required: true })}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none"
                         type="text"
                         placeholder="Street Address"
                     />
@@ -61,7 +61,7 @@ export const AddressForm = ({ onTabSwitch }) => {
                     <label className="block text-sm font-semibold text-gray-700">Apartment / House</label>
                     <input 
                         {...register("apartment")}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none"
                         type="text"
                         placeholder="Apartment / House (Optional)"
                     />
@@ -72,7 +72,7 @@ export const AddressForm = ({ onTabSwitch }) => {
                     <label className="block text-sm font-semibold text-gray-700">City</label>
                     <input 
                         {...register("city", { required: true })}
-                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500 focus:outline-none"
+                        className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-red-500 focus:outline-none"
                         type="text"
                         placeholder="City"
                     />

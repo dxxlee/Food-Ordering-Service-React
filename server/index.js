@@ -29,11 +29,15 @@ const API_URL = process.env.REACT_APP_API_URL; // Используем URL из 
 // }
 
 
+// var corsOptions = { //FOR GITHUB
+//     origin: "https://food-order-front.onrender.com", // Allow front-end domain
+//     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods (optional)
+//     credentials: true // Allow credentials such as cookies (if needed)
+// };
+
 var corsOptions = {
-    origin: "https://food-order-front.onrender.com", // Allow front-end domain
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods (optional)
-    credentials: true // Allow credentials such as cookies (if needed)
-};
+    origin: "http://localhost:3000"
+}
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());

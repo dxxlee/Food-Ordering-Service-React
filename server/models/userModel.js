@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   twoFactorEnabled: { type: Boolean, default: false }, // Флаг для включения 2FA
   twoFactorSecret: { type: String }, // Секретный ключ для Google Authenticator
   avatar: { type: String },
+  isAdmin: { type: Boolean, default: false }
 });
 
 userSchema.pre("save", async function (next) {

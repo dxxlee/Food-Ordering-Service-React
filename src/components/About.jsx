@@ -1,4 +1,4 @@
-import aboutImage from "../assets/images/about-image.png";
+import aboutImage from "../assets/images/about.png";
 import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { motion } from "framer-motion";
@@ -46,7 +46,7 @@ export const About = () => {
             <img
               src={aboutImage}
               alt="About Us"
-              className="w-full max-w-md rounded-xl shadow-lg"
+              className="w-full max-w-md rounded-xl"
             />
           </motion.div>
         </div>

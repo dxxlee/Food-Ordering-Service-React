@@ -1,25 +1,21 @@
-require('dotenv').config(); 
-const jwt = require('jsonwebtoken');
+// middleware/adminAuthMiddleware.js
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 const adminAuthMiddleware = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1]; 
-
+  const token = req.header("Authorization")?.replace("Bearer ", "");
   if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Unauthorized: No token provided" });
   }
-
   try {
-    const decoded = jwt.verify(token, process.env.SECRET_KEY); // Секретный ключ для проверки токена
-
-    
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
     if (decoded.role !== "admin") {
-      return res.status(403).json({ message: "Forbidden" });
+      return res.status(403).json({ message: "Forbidden: Not an admin" });
     }
-
-    req.user = decoded; 
+    req.user = decoded;
     next();
-  } catch (error) {
-    return res.status(401).json({ message: "Unauthorized" });
+  } catch (err) {
+    return res.status(401).json({ message: "Unauthorized: Invalid token" });
   }
 };
 

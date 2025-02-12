@@ -16,7 +16,9 @@ const PaymentForm = ({ cart, setCart }) => {
         totalPrice: cart.reduce((sum, item) => sum + item.price * item.amount, 0),
       };
 
-      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/orders/create", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/orders/create",
+      // const response = await fetch("http://localhost:8080/api/orders/create",
+       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +29,18 @@ const PaymentForm = ({ cart, setCart }) => {
 
       if (response.ok) {
         setCart([]); // очистить корзину на фронте
+
+        // После успешного создания заказа отправляем запрос на очистку корзины на сервере
+        await fetch("http://localhost:8080/api/cart/clear", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("Auth token")}`,
+        },
+      });
+
         navigate("/payment-success");
+        window.location.reload();
       } else {
         const error = await response.json();
         console.error("Error creating order:", error.message);
@@ -61,7 +74,7 @@ const PaymentForm = ({ cart, setCart }) => {
       </div>
 
       {/*общ сумма*/}
-      <div className="mt-4 p-3 bg-yellow-100 text-gray-900 font-bold text-lg text-center rounded-lg">
+      <div className="mt-4 p-3 bg-green-200 text-gray-900 font-bold text-lg text-center rounded-lg">
         Total: ${cart.reduce((sum, item) => sum + item.price * item.amount, 0).toFixed(2)}
       </div>
 
@@ -69,7 +82,7 @@ const PaymentForm = ({ cart, setCart }) => {
       <div className="mt-6 flex justify-center">
         <Button 
           onClick={handlePayment}
-          className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg text-lg transition-all"
+          className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-lg transition-all"
         >
           Pay Now
         </Button>

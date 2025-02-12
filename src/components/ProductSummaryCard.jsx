@@ -4,7 +4,9 @@ import { FiTrash2 } from "react-icons/fi"; // иконка мусорки
 export const ProductSummaryCard = ({ product, updateCart }) => {
     const handleIncrement = async () => {
         try {
-            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/add", 
+            // const response = await fetch("http://localhost:8080/api/cart/add", 
+            {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -13,7 +15,9 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
                 body: JSON.stringify({
                     productId: product.product,
                     name: product.name,
-                    price: product.price
+                    price: product.price,
+                    imageUrl: product.imageUrl,
+                    desciption: product.desciption
                 }),
             });
 
@@ -28,7 +32,9 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
 
     const handleDecrement = async () => {
         try {
-            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/decrease", {
+            const response = await fetch("https://food-order-backend-6az2.onrender.com/api/cart/decrease", 
+            // const response = await fetch("http://localhost:8080/api/cart/decrease", 
+            {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -48,7 +54,9 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
 
     const handleRemove = async () => {
         try {
-            const response = await fetch(`https://food-order-backend-6az2.onrender.com/api/cart/remove-item/${product.product}`, {
+            const response = await fetch(`https://food-order-backend-6az2.onrender.com/api/cart/remove-item/${product.product}`, 
+            // const response = await fetch(`http://localhost:8080/api/cart/remove-item/${product.product}`,
+            {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${sessionStorage.getItem("Auth token")}`,
@@ -79,12 +87,13 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
                     className="w-full h-full object-cover rounded-lg"
                 />
             </div>
+            
 
             {/*инфа о блюде*/}
             <div className="flex-grow">
                 <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
-                <p className="text-gray-500">{product.description}</p>
-                <p className="text-gray-800 font-bold">{`${product.price}$`}</p>
+                <p className="text-gray-500">{product.desciption}</p>
+                <p className="text-gray-800">{`${product.price}$`}</p>
             </div>
 
             {/*управление количеством*/}
@@ -98,7 +107,7 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
                 </button>
                 <span className="text-lg font-bold">{product.amount}</span>
                 <button
-                    className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-lg transition"
+                    className="bg-gradient-to-r from-green-400 via-green-400 to-green-500 hover:bg-green-600 px-3 py-1 rounded-lg transition"
                     onClick={handleIncrement}
                 >
                     +
@@ -107,7 +116,7 @@ export const ProductSummaryCard = ({ product, updateCart }) => {
 
             {/*кнопка удалить*/}
             <button
-                className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-lg transition flex items-center justify-center"
+                className="bg-red-300 hover:bg-black text-red-600 p-2 rounded-lg transition flex items-center justify-center"
                 onClick={handleRemove}
             >
                 <FiTrash2 size={20} />

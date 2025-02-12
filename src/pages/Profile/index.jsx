@@ -42,7 +42,9 @@ const Profile = () => {
     formData.append("avatar", imageFile);
 
     try {
-      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/upload-avatar", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/upload-avatar", 
+      // const response = await fetch("http://localhost:8080/api/upload-avatar", 
+      {
         method: "POST",
         body: formData,
         headers: {
@@ -65,7 +67,10 @@ const Profile = () => {
   const toggle2FA = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/toggle-2fa", {
+      const response = await fetch("https://food-order-backend-6az2.onrender.com/api/toggle-2fa",
+      // const response = await fetch("http://localhost:8080/api/toggle-2fa",
+
+       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

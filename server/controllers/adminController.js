@@ -1,3 +1,4 @@
+// adminController.js
 const Product = require('../models/productModel');
 const Order = require('../models/orderModel');
 const User = require('../models/userModel');
@@ -54,5 +55,5 @@ module.exports = {
   getUsers,
   addProductToMenu,
   updateProductInMenu,
-  deleteProductFromMenu,
+  deleteProductFromMenu
 };
