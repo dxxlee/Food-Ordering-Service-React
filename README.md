@@ -2,10 +2,11 @@
 
 **Website Link**: https://food-order-front.onrender.com
 
+
 ## 📌 Overview
 Food Ordering Service is a full-stack web application designed to make ordering your favorite meals fast and convenient. With a user-friendly interface and a robust backend, users can browse a diverse menu, manage their cart, and place orders effortlessly. Administrators can securely manage products, orders, and users via a dedicated admin panel.
 
-🚀 **Note:** This project is actively maintained and open-source.
+🚀 **Note:** This project is actively maintained and open-source. Project files is in `dev` branch
 
 ## 🔧 Features
 - **User Authentication:**
